@@ -2,7 +2,7 @@
 
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
-import { Navbar, Hero } from "./components";
+import { Navbar, Hero, Cocktails } from "./components";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -11,9 +11,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <div className="h-dvh">
-
-      </div>
+      <Cocktails />
     </main>
   );
 }
