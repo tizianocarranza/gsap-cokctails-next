@@ -1,3 +1,5 @@
+"use client";
+
 import { useMediaQuery } from "react-responsive";
 import { featureLists, goodLists } from "../constants";
 import { useGSAP } from "@gsap/react";
@@ -5,7 +7,6 @@ import gsap from "gsap";
 
 const Art = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
-
   useGSAP(() => {
     const start = isMobile ? "top 20%" : "top top";
 
@@ -45,8 +46,8 @@ const Art = () => {
         <h2 className="will-fade">The ART</h2>
         <div className="content">
           <ul className="space-y-4 will-fade">
-            {goodLists.map((feature, index) => (
-              <li key={index} className="flex items-center gap-2">
+            {goodLists.map((feature) => (
+              <li key={feature} className="flex items-center gap-2">
                 <img src="/images/check.png" alt="Check" />
                 <p>{feature}</p>
               </li>
@@ -62,8 +63,8 @@ const Art = () => {
           </div>
 
           <ul className="space-y-4 will-fade">
-            {featureLists.map((feature, index) => (
-              <li key={index} className="flex items-center justify-start gap-2">
+            {featureLists.map((feature) => (
+              <li key={feature} className="flex items-center justify-start gap-2">
                 <img src="/images/check.png" alt="Check" />
                 <p className="md:w-fit w-60">{feature}</p>
               </li>
