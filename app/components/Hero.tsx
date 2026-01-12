@@ -1,11 +1,18 @@
 "use client";
 
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   useGSAP(() => {
+    // Text Animation
     const heroSplit = new SplitText(".title", {
       type: "chars, words",
     });
@@ -14,7 +21,6 @@ const Hero = () => {
       type: "lines",
     });
 
-    // Apply text-gradient class once before animating
     heroSplit.chars.forEach((char) => char.classList.add("text-gradient"));
 
     gsap.from(heroSplit.chars, {
@@ -33,6 +39,7 @@ const Hero = () => {
       delay: 1,
     });
 
+    // Leafs Animation
     gsap
       .timeline({
         scrollTrigger: {
@@ -44,7 +51,38 @@ const Hero = () => {
       })
       .to(".right-leaf", { y: 200 }, 0)
       .to(".left-leaf", { y: -200 }, 0);
-  }, []);
+
+    // Video Animation
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    const startValue = isMobile ? "top 50%" : "center 60%";
+    const endValue = isMobile ? "120% top" : "bottom top";
+
+    const videoTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: video,
+        start: startValue,
+        end: endValue,
+        scrub: true,
+        pin: true,
+      },
+    });
+
+    const setUpVideoTimeline = () => {
+      videoTimeline.to(video, {
+        currentTime: video.duration,
+        ease: "none",
+      });
+    };
+
+    if (video.readyState >= 1) {
+      setUpVideoTimeline();
+    } else {
+      video.addEventListener("loadedmetadata", setUpVideoTimeline);
+    }
+  }, [isMobile]);
 
   return (
     <>
@@ -86,7 +124,13 @@ const Hero = () => {
       </section>
 
       <div className="video absolute inset-0">
-        <video muted playsInline preload="auto" src="/videos/output.mp4" />
+        <video
+          ref={videoRef}
+          muted
+          playsInline
+          preload="auto"
+          src="/videos/output.mp4"
+        />
       </div>
     </>
   );
