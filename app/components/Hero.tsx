@@ -82,8 +82,11 @@ const Hero = () => {
     } else {
       video.addEventListener("loadedmetadata", setUpVideoTimeline);
     }
-  }, [isMobile]);
 
+    return () => {
+      video.removeEventListener("loadedmetadata", setUpVideoTimeline);
+    };
+  }, [isMobile]);
   return (
     <>
       <section id="hero" className="noisy">
