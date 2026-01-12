@@ -69,8 +69,9 @@ const mockTailLists = [
     detail: "600 ml",
     price: "$29",
   },
-];const profileLists = [
-  {
+];
+
+const profileLists = [  {
     imgPath: "/images/profile1.png",
   },
   {
