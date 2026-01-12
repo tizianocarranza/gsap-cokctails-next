@@ -32,10 +32,9 @@ const Cocktails = () => {
       />
       <img
         src="/images/cocktail-right-leaf.png"
-        alt="Left leaf"
+        alt="Right leaf"
         id="c-right-leaf"
       />
-
       <div className="list">
         <div className="popular">
           <h2>Most popular cocktails:</h2>
