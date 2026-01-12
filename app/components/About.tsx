@@ -4,8 +4,7 @@ import { SplitText } from "gsap/all";
 
 const About = () => {
   useGSAP(() => {
-    const titleSplit = SplitText.create("#about h2", { type: "words " });
-
+    const titleSplit = SplitText.create("#about h2", { type: "words" });
     const scrollTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: "#about",
@@ -39,10 +38,9 @@ const About = () => {
           <div className="md:col-span-8">
             <p className="badge">Best Cocktails</p>
             <h2>
-              Where every deatil matters <span className="text-white">-</span>{" "}
+              Where every detail matters <span className="text-white">-</span>{" "}
               from muddle to garnish
-            </h2>
-          </div>
+            </h2>          </div>
 
           <div className="sub-content">
             <p>
