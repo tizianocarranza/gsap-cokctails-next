@@ -137,7 +137,7 @@ const socials: { name: string; icon: string; url: string }[] = [
   },
 ];
 
-const sliderLists: {
+const allCocktails: {
   id: number;
   name: string;
   image: string;
@@ -188,5 +188,5 @@ export {
   openingHours,
   storeInfo,
   socials,
-  sliderLists,
+  allCocktails,
 };
