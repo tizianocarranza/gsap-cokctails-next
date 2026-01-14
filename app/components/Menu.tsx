@@ -48,7 +48,7 @@ const Menu = () => {
       scrollTrigger: {
         trigger: "#menu",
         start: "top 80%",
-        end: "top 10%",
+        end: "top top",
         scrub: true,
       },
     });
